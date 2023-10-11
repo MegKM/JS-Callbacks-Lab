@@ -8,7 +8,15 @@ function writeDing() {
   console.log('Ding!');
 }
 
-let timerId = setTimeout(writeDing(), 3000);
+// let timerId = setTimeout(writeDing, 3000);
+
+
+
+
+
+
+
+
 // Exercise 2
 
 // Javascript arrays have a built-in sort method that can take
@@ -24,20 +32,42 @@ let timerId = setTimeout(writeDing(), 3000);
 const words = ['short', 'medium', 'delicious', 'nice', 'lengthy'];
 
 // The sort method sorts "in place", that is, it modifies the array
-words.sort(/* pass in a named callback here */);
+let sortedWords = words.sort(function(a, b){
+    return b.length - a.length;
+});
+
+console.log(sortedWords);
 
 // Check that logging words now outputs
 // ["nice", "short", "medium", "lengthy", "delicious"]
+
+
+
+
+
+
+
+
 // Exercise 3
 //
 // Filter the words array from above to create a new array
 // named longWords that includes only the words with 7 or more
 // characters
 
-const longWords = words.filter(/* write an anonymous inline function here */);
+const longWords = words.filter((word) => word.length > 6);
+console.log(longWords);
 
 // Check that logging longWords outputs
 // ["lengthy", "delicious"]
+
+
+
+
+
+
+
+
+
 // Exercise 4
 
 // Code a forEach method:
@@ -53,11 +83,29 @@ function log(elem, idx) {
   console.log(`Index: ${idx} / Element Value: ${elem}`);
 }
 
+function forEach(array, callback){
+    for(let i = 0; i < array.length; i++){
+        callback(array[i], i)
+    }
+}
+
+forEach(colors, log)
 // calling forEach(colors, log) should resulting in this output:
 // Index: 0 / Element Value: red
 // Index: 1 / Element Value: green
 // Index: 2 / Element Value: blue
 // Index: 3 / Element Value: purple
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Exercise 5
@@ -83,6 +131,12 @@ function step1(cb) {
     }, 250);
   }
   
+//   step1(step2(step3(logMessage())))
+  step1(cb)
+
+  function logMessage(){
+    console.log("FINISHED");
+  }
   /*
   The above functions are working asynchronous functions - DO NOT
   change any of their code. They are what we call "black boxes"
@@ -91,7 +145,8 @@ function step1(cb) {
   Each of the three functions accept a single argument - a callback function.
   
   Write the code that invokes the three functions such that the output in the console will be:
-  
+
+
   STEP 1 COMPLETE
   STEP 2 COMPLETE
   STEP 3 COMPLETE
