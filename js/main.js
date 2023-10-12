@@ -8,14 +8,9 @@ function writeDing() {
   console.log('Ding!');
 }
 
-// let timerId = setTimeout(writeDing, 3000);
+let timerId = setTimeout(writeDing, 3000);
 
-
-
-
-
-
-
+//-----------------------------------------------------------------------------------------//
 
 // Exercise 2
 
@@ -33,7 +28,7 @@ const words = ['short', 'medium', 'delicious', 'nice', 'lengthy'];
 
 // The sort method sorts "in place", that is, it modifies the array
 let sortedWords = words.sort(function(a, b){
-    return b.length - a.length;
+    return a.length - b.length;
 });
 
 console.log(sortedWords);
@@ -41,12 +36,7 @@ console.log(sortedWords);
 // Check that logging words now outputs
 // ["nice", "short", "medium", "lengthy", "delicious"]
 
-
-
-
-
-
-
+//------------------------------------------------------------------------------------------//
 
 // Exercise 3
 //
@@ -60,13 +50,7 @@ console.log(longWords);
 // Check that logging longWords outputs
 // ["lengthy", "delicious"]
 
-
-
-
-
-
-
-
+//-----------------------------------------------------------------------------------------//
 
 // Exercise 4
 
@@ -96,17 +80,7 @@ forEach(colors, log)
 // Index: 2 / Element Value: blue
 // Index: 3 / Element Value: purple
 
-
-
-
-
-
-
-
-
-
-
-
+//-----------------------------------------------------------------------------------------//
 
 // Exercise 5
 
@@ -131,12 +105,14 @@ function step1(cb) {
     }, 250);
   }
   
-//   step1(step2(step3(logMessage())))
-  step1(cb)
+  step1(function(){
+    step2(function(){
+        step3(function(){
+            console.log("FINISHED");
+        })
+    })
+  })
 
-  function logMessage(){
-    console.log("FINISHED");
-  }
   /*
   The above functions are working asynchronous functions - DO NOT
   change any of their code. They are what we call "black boxes"
